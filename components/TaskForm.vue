@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{ taskId?: string }>();
+const props = defineProps<{ taskId?: number }>();
 const tasks: Ref<
   {
     id: number;
@@ -8,7 +8,7 @@ const tasks: Ref<
     complete: boolean;
   }[]
 > = useState("tasks");
-const task = tasks.value.find((t) => t.id == parseInt(props.taskId ?? "-1"));
+const task = tasks.value.find((t) => t.id === props.taskId);
 
 const taskModel = ref({
   title: "",
@@ -26,9 +26,7 @@ if (task) {
 const handleForm = () => {
   // isUpdate
   if (task) {
-    const idx = tasks.value.findIndex(
-      (t) => t.id == parseInt(props.taskId ?? "-1")
-    );
+    const idx = tasks.value.findIndex((t) => t.id === props.taskId);
     tasks.value.splice(idx, 1, { ...tasks.value[idx], ...taskModel.value });
   } else {
     tasks.value = [

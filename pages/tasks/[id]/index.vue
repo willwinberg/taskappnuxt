@@ -1,5 +1,11 @@
 <script setup lang="ts">
 const route = useRoute();
+const taskId = computed(() => {
+  if (typeof route.params.id === "string") {
+    return parseInt(route.params.id);
+  }
+  return undefined;
+});
 </script>
 
 <template>
@@ -10,6 +16,6 @@ const route = useRoute();
         Update your task here
       </p>
     </div>
-    <TaskForm :task-id="route.params.id" />
+    <TaskForm :task-id="taskId" />
   </div>
 </template>
