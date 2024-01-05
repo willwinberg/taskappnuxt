@@ -1,17 +1,15 @@
 <script setup lang="ts">
-definePageMeta({
-  validate: async (route) => {
-    // Check if the id is made up of digits
-    return /^\d+$/.test(route.params.id)
-  }
-})
-
-const route = useRoute()
-
-// When accessing /posts/1, route.params.id will be 1
-console.log(route.params.id)
+const route = useRoute();
 </script>
 
 <template>
-    <div>task detail {{ route.params.id }}</div>
+  <div>
+    <div class="px-4 sm:px-0">
+      <h3 class="text-base font-semibold leading-7 text-gray-900">Edit Task</h3>
+      <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
+        Update your task here
+      </p>
+    </div>
+    <TaskForm :task-id="route.params.id" />
+  </div>
 </template>
