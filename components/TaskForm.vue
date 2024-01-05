@@ -15,7 +15,7 @@ const taskModel = ref({
   description: "",
   complete: false,
 });
-const valid = computed(() => taskModel.value.title.length > 0)
+const valid = computed(() => taskModel.value.title.length > 0);
 
 // isUpdate
 if (task) {
@@ -38,12 +38,14 @@ const handleForm = () => {
         ...tasks.value,
       ];
     }
+    localStorage.setItem('task-list', JSON.stringify(tasks.value))
   }
 };
 const deleteTask = () => {
   if (task) {
     const idx = tasks.value.findIndex((t) => t.id === props.taskId);
     tasks.value.splice(idx, 1);
+    localStorage.setItem('task-list', JSON.stringify(tasks.value))
     router.push("/");
   }
 };
@@ -102,7 +104,12 @@ const deleteTask = () => {
         <div class="col-span-full grid grid-cols-2 gap-2">
           <div>
             <button
-              :class="['text-white py-2 px-4 shadow-md w-full rounded bg-blue-400 hover:bg-blue-600 font-semibold', valid ? '' : 'bg-gray-300 px-4 py-2 rounded-md cursor-not-allowed opacity-50']"
+              :class="[
+                'text-white py-2 px-4 shadow-md w-full rounded bg-blue-400 hover:bg-blue-600 font-semibold',
+                valid
+                  ? ''
+                  : 'bg-gray-300 px-4 py-2 rounded-md cursor-not-allowed opacity-50',
+              ]"
               type="submit"
               :disabled="!valid"
             >

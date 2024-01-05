@@ -1,18 +1,28 @@
 <script setup lang="ts">
-useState('tasks', () => [
+const tasks = useState("tasks", () => [
   {
     id: 1,
-    title: 'First Task',
-    description: 'The first one',
-    complete: false
+    title: "First Task",
+    description: "The first one",
+    complete: false,
   },
   {
     id: 2,
-    title: 'Second Task',
-    description: 'The second one',
-    complete: true
+    title: "Second Task",
+    description: "The second one",
+    complete: true,
+  },
+]);
+
+onMounted(() => {
+  const storedTasks = localStorage.getItem("task-list");
+  if (storedTasks !== null) {
+    const parsedTasks = JSON.parse(storedTasks);
+    tasks.value = parsedTasks;
+  } else {
+    localStorage.setItem("task-list", JSON.stringify(tasks.value));
   }
-])
+});
 </script>
 
 <template>
