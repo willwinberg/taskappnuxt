@@ -27,7 +27,7 @@ const tasks: Ref<
         <ul role="list" class="divide-y divide-gray-200">
           <li
             v-for="(task, index) in tasks"
-            :key="index"
+            :key="index + task.id"
             class="flex justify-between gap-x-6 py-5 p-1"
           >
             <NuxtLink :to="`/tasks/${task.id}`" class="flex w-full">
@@ -38,7 +38,7 @@ const tasks: Ref<
                     task.complete ? 'line-through' : '',
                   ]"
                 >
-                  <p class="text-sm font-semibold leading-6 text-gray-900">
+                  <p class="text-left text-sm font-semibold leading-6 text-gray-900">
                     {{ task.title }}
                   </p>
                   <p class="mt-1 truncate text-xs leading-5 text-gray-500">

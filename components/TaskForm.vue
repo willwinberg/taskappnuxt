@@ -38,15 +38,20 @@ const handleForm = () => {
         ...tasks.value,
       ];
     }
-    localStorage.setItem('task-list', JSON.stringify(tasks.value))
+    localStorage.setItem("task-list", JSON.stringify(tasks.value));
+    taskModel.value = {
+      title: "",
+      description: "",
+      complete: false,
+    };
   }
 };
 const deleteTask = () => {
   if (task) {
+    router.push("/");
     const idx = tasks.value.findIndex((t) => t.id === props.taskId);
     tasks.value.splice(idx, 1);
-    localStorage.setItem('task-list', JSON.stringify(tasks.value))
-    router.push("/");
+    localStorage.setItem("task-list", JSON.stringify(tasks.value));
   }
 };
 </script>
@@ -119,7 +124,7 @@ const deleteTask = () => {
           <div v-if="task">
             <button
               class="text-white py-2 px-4 shadow-md w-full rounded bg-red-400 hover:bg-red-600 font-semibold"
-              @click="deleteTask"
+              @click.prevent="deleteTask"
             >
               Delete
             </button>
