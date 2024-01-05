@@ -3,13 +3,13 @@ const tasks = useState("tasks", () => [
   {
     id: 1,
     title: "First Task",
-    description: "The first one",
+    description: "There can only be one Highlander",
     complete: false,
   },
   {
     id: 2,
     title: "Second Task",
-    description: "The second one",
+    description: "However, there's 2",
     complete: true,
   },
 ]);

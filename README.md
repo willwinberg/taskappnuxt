@@ -1,6 +1,8 @@
-# Nuxt 3 Minimal Starter
+# Test Nuxt app for InstaDapp
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Spec: [Test Task](https://sandy-gatsby-552.notion.site/Test-Task-e10de2df2ddd459ea3895c94260c3847)
+
+Demo:[deployment documentation](https://main--singular-sundae-331d20.netlify.app/)
 
 ## Setup
 
