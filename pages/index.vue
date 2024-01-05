@@ -30,7 +30,7 @@ const tasks: Ref<
             :key="index"
             class="flex justify-between gap-x-6 py-5 p-1"
           >
-            <NuxtLink :to="`/tasks/${task.id}`">
+            <NuxtLink :to="`/tasks/${task.id}`" class="flex w-full">
               <div class="flex min-w-0 gap-x-4">
                 <div
                   :class="[
